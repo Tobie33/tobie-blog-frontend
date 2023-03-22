@@ -1,0 +1,34 @@
+html{
+  height:100%;
+  body{
+    height: 100%;
+    #root{
+      height:100%;
+      #pages{
+        height:100%;
+        .navbar{
+          height:7%;
+        }
+        #main-page{
+          height:93%;
+          #whole-page{
+            height:100%;
+          }
+            .upper{
+              height:46.5%;
+            }
+            .lower{
+              height:46.5%;
+              button{
+                height:100px;
+                width:150px;
+                a:hover{
+                  color: #FFF
+                }
+              }
+            }
+          }
+      }
+    }
+  }
+}

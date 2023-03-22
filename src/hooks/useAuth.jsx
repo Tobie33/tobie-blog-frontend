@@ -6,7 +6,10 @@ import { fetcher, handleErrors } from '@/hooks/_utils'
 
 const useAuth = () => {
   const navigate = useNavigate()
-  const { data, error, isLoading, isValidating, mutate } = useSWR(`${process.env.API_URL}/api/my/profile`, fetcher)
+  const { data, error, isLoading, isValidating, mutate } = useSWR(`${process.env.API_URL}/api/auth/logincheck`, fetcher, {
+    shouldRetryOnError: false,
+    revalidateOnFocus: false
+  })
 
   const apiSignup = (user) => axios({
     method: 'POST',
@@ -23,7 +26,7 @@ const useAuth = () => {
     data: user
   }).then(() => {
     mutate()
-    navigate('/private')
+    navigate('/')
   }).catch(handleErrors)
 
   const apiLogout = () => axios({
@@ -33,7 +36,7 @@ const useAuth = () => {
     // force set the data to undefined
     // because just revalidation will not remove cache data
     mutate(undefined)
-    navigate('/auth/login')
+    navigate('/')
   }).catch(handleErrors)
 
   return {

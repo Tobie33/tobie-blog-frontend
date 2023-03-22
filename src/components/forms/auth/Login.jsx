@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
 const initialValues = {
-  email: '',
+  nameOrEmail: '',
   password: ''
 }
 
@@ -15,7 +15,7 @@ function FormsAuthLogin(props) {
       enableReinitialize
       validationSchema={
         Yup.object({
-          email: Yup.string().required().label('Title'),
+          nameOrEmail: Yup.string().required().label('Name or Email'),
           password: Yup.string().min(6).required().label('Password')
         })
       }
@@ -24,16 +24,16 @@ function FormsAuthLogin(props) {
         ({ errors: e, touched: t, isSubmitting }) => (
           <Form>
             <div className="mb-3">
-              <label>Email</label>
+              <label>Name or Email</label>
               <Field
-                className={`form-control ${e?.email && t?.email && 'is-invalid'}`}
-                name="email"
-                type="email"
+                className={`form-control ${e?.nameOrEmail && t?.nameOrEmail && 'is-invalid'}`}
+                name="nameOrEmail"
+                type="nameOrEmail"
                 placeholder="adam.chan@gmail.com"
               />
               <ErrorMessage
                 className="invalid-feedback"
-                name="email"
+                name="nameOrEmail"
                 component="div"
               />
             </div>
@@ -51,8 +51,9 @@ function FormsAuthLogin(props) {
                 component="div"
               />
             </div>
-
-            <button className="btn btn-primary float-end" type="submit" disabled={isSubmitting}>Submit</button>
+            <div className="d-flex justify-content-center">
+              <button className="btn btn-dark py-2 px-3 mt-3" type="submit" disabled={isSubmitting}>Submit</button>
+            </div>
           </Form>
         )
       }
