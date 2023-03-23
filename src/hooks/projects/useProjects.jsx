@@ -20,14 +20,14 @@ const useProjects = (pid) => {
     navigate(`/projects/${id}`)
   }).catch(handleErrors)
 
-  const apiProjectPost = (project) => axios({
+  const apiProjectEdit = (project) => axios({
     method: 'PUT',
-    url: `${process.env.API_URL}/api/projects/${pid}`,
+    url: `${process.env.API_URL}/api/projects/${project.pid}`,
     data: project
   }).then((fullProject) => {
     const { data: { id } } = fullProject
     mutate()
-    navigate(`/${id}`)
+    navigate(`/projects/${id}`)
   }).catch(handleErrors)
 
   return {
@@ -36,7 +36,7 @@ const useProjects = (pid) => {
     isLoading,
     isValidating,
     apiProjectCreate,
-    apiProjectPost
+    apiProjectEdit
   }
 }
 

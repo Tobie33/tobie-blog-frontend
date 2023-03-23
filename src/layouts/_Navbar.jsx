@@ -13,7 +13,7 @@ function Navigation() {
 
   return (
     <div id="pages">
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" sticky="top">
         <Container className="m-0">
           <Navbar.Brand href="/">Main Page</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
